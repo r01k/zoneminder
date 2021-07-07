@@ -864,10 +864,10 @@ Debug(1, "Loading image");
     } else {
       Debug(3, "Content length: %d", img_buffer_size);
       if ( 
-          ( 0 > fprintf(stdout, "Content-Length: %d\r\nX-Timestamp: %.06f\r\n\r\n",
-                      img_buffer_size, event_data->frames[curr_frame_id-1].timestamp) )
+          (0 > fprintf(stdout, "Content-Length: %d\r\nX-Timestamp: %.06f\r\n\r\n",
+                      img_buffer_size, event_data->frames[curr_frame_id-1].timestamp))
           ||
-          ( fwrite(img_buffer, img_buffer_size, 1, stdout) != 1 )
+          (fwrite(img_buffer, img_buffer_size, 1, stdout) != 1)
          ) {
         Error("Unable to send stream frame: %s", strerror(errno));
         return false;
